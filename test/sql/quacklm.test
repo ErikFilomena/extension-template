@@ -1,0 +1,23 @@
+# name: test/sql/quacklm.test
+# description: test quacklm extension
+# group: [quacklm]
+
+# Before we load the extension, this will fail
+statement error
+SELECT quacklm('Sam');
+----
+Catalog Error: Scalar Function with name quacklm does not exist!
+
+# Require statement will ensure this test is run with this extension loaded
+require quacklm
+
+# Confirm the extension works
+query I
+SELECT 1;
+----
+1
+
+query I
+SELECT 1=1;
+----
+true
